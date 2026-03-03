@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Python File",
+			"type": "shell",
+			"command": "/opt/homebrew/bin/python3",
+			"args": [
+				"${file}"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Python with Input File",
+			"type": "shell",
+			"command": "/opt/homebrew/bin/python3 ${file} < ${fileDirname}/input.txt",
+			"group": "test",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "build and run C program",
+			"type": "shell",
+			"command": "gcc",
+			"args": [
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"${file}"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Generated task for compiling C program"
+		},
+		{
+			"label": "run C program",
+			"type": "shell",
+			"command": "${fileDirname}/${fileBasenameNoExtension}",
+			"group": "test",
+			"dependsOn": "build and run C program"
+		}
+	]
+}
