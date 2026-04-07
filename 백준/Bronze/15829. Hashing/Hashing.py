@@ -13,7 +13,7 @@ def solve():
         nums.append(ord(ch)-ord('a')+1)
 
     for i in range(l):
-        result += (nums[i] * (31**i)) % MOD
+        result = (result + nums[i] * (31**i)) % MOD
     print(result)
 
 
